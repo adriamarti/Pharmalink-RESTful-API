@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const checkAuth = require('../middleware/authorization')
 
+const ProductsControllers = require('../controllers/products')
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, `./uploads/`);
@@ -32,28 +34,7 @@ const upload = multer({
 const Product = require('../models/product');
 
 // GET request for all products
-router.get('/', (req, res, next) => {
-  Product.find()
-    .select('name price _id productImage')
-    .exec()
-    .then(docs => {
-      console.log(docs);
-      if (docs.length >= 0) {
-        res.status(200).json(docs);
-      } else {
-        res.status(200).json({
-          message: `No products found`
-        });
-      }
-      
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({
-        error: err
-      });
-    });
-});
+router.get('/', ProductsControllers.getAllProducts);
 
 // POST request to create a new product
 router.post('/', checkAuth, upload.single('productImage'), (req, res, next) => {
