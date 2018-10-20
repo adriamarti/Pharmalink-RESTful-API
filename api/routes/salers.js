@@ -5,6 +5,11 @@ const upload = require('../middleware/upload');
 
 const SalersControllers = require('../controllers/salers');
 
+// GET request to get all sellers data
+router.get('/', SalersControllers.getAllSalers);
+
+// GET request to get single seller data
+router.get('/:salerId', SalersControllers.getSaler);
 
 // POST request to Signup
 router.post('/signup', SalersControllers.signup);

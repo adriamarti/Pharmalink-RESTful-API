@@ -6,6 +6,45 @@ const token = require('../services/token');
 
 const Saler = require('../models/saler');
 
+exports.getAllSalers = (req, res, next) => {
+  Saler.find()
+    .select('_id email image legalData name contactPoints validAccount')
+    .exec()
+    .then(salers => {
+      console.log(docs);
+      if (salers.length >= 0) {
+        res.status(200).json(salers);
+      } else {
+        res.status(200).json({
+          message: `No salers found`
+        });
+      }
+      
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+};
+
+exports.getSaler = (req, res, next) => {
+  Saler.findById(req.params.salerId)
+    .select('_id email image legalData name contactPoints validAccount')
+    .exec()
+    .then(saler => {
+      console.log(saler);
+      res.status(200).json(saler);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+};
+
 exports.signup = (req, res, next) => {
   Saler.findOne({ email: req.body.email })
     .exec()
