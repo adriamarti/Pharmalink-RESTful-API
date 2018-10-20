@@ -5,6 +5,7 @@ const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]
 const salerSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   email: { type: String, required: true, match: emailRegEx },
+  image: { type: String, default: null},
   legalData: { type: Object, default: null },
   name: { type: String, default: null },
   password: { type: String, required: true },

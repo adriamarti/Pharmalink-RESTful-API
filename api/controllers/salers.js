@@ -88,8 +88,29 @@ exports.login = (req, res, next) => {
     });
 };
 
+exports.edit = (req, res, next) => {
+  const payload = req.body;
+
+  if (req.file) {
+    payload.image = req.file.filename
+  }
+
+  Saler.updateOne({ _id: req.params.salerId }, payload)
+    .exec()
+    .then(result => {
+      console.log(result);
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+};
+
 exports.cancelAccount = (req, res, next) => {
-  Saler.updateOne({ _id: req.params.salerId }, { validAccount: false})
+  Saler.updateOne({ _id: req.params.salerId }, { validAccount: false })
     .exec()
     .then(result => {
       console.log(result);
