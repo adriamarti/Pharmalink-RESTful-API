@@ -1,0 +1,8 @@
+{
+  "env": {
+    "MONGO_ATLAS_URL": "MONGO_ATLAS_URL",
+    "MONGO_ATLAS_USER": "MONGO_ATLAS_USER",
+    "MONGO_ATLAS_PW": "MONGO_ATLAS_PW",
+    "TOKEN_KEY": "TOKEN_KEY"
+  }
+}
