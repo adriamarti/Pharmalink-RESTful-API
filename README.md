@@ -6,8 +6,8 @@ RESTful API to create, update and remove data from a MongoDB.
 
 ## Instalation & run the project
 
-* clone the repo `$ git clone https://github.com/adriamarti/MyReads-A-Book-Tracking-App.git`
-* navigate to the cloned project `$ cd MyReads-A-Book-Tracking-App`
+* clone the repo `$ git clone https://github.com/adriamarti/Pharmalink-RESTful-API.git`
+* navigate to the cloned project `$ cd Pharmalink-RESTful-API`
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
